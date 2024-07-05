@@ -1,8 +1,10 @@
+import datetime
 import json
 import os
 
 import github.Repository
 from github import Github
+
 from utils import check_rate_limit
 
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
@@ -31,7 +33,7 @@ class ExtractDataBase:
         return True
 
     @staticmethod
-    def get_repo_data(repo: github.Repository.Repository, file_path: str):
+    def get_repo_data(repo: github.Repository.Repository, file_path: str) -> None:
         repo_name = repo.name
         base_repo_data = {
             "full_name": repo.full_name,
@@ -47,7 +49,7 @@ class ExtractDataBase:
         for pull_request in pull_requests:
             updated_data = {
                 "is_merged": pull_request.is_merged(),
-                "updated_at": pull_request.updated_at.isoformat(),
+                "merged_at": pull_request.merged_at.isoformat() if isinstance(pull_request.merged_at, datetime.datetime) else None,
             }
             new_data = {**base_repo_data, **updated_data}
             data_list.append(new_data)

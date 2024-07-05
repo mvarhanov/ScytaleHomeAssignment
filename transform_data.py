@@ -45,7 +45,7 @@ def transform_data(file_path: str) -> None:
         "repository_owner",
         "num_prs",
         "num_prs_merged",
-        col("updated_at").alias("merged_at"),
+        col("merged_at").alias("merged_at"),
         "is_compliant",
     )
 

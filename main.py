@@ -4,7 +4,7 @@ from transform_data import transform_data
 FILE_PATH = "json_data"
 
 
-def main(file_path: str):
+def main(file_path: str) -> None:
     try:
         if extract_base.extract_data(file_path):
             transform_data(file_path)

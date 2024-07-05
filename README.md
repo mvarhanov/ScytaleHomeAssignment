@@ -36,7 +36,7 @@
 #### Steps to install project:
 
 ```bash
-git clone https://github.com/username/repository.git
+git clone https://github.com/mvarhanov/ScytaleHomeAssignment.git
 cd scytale_exercise
 pip install -r requirements.txt
 ```
